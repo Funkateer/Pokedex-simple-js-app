@@ -24,3 +24,14 @@ var repository = [
     type: ['Normal']
     }
 ];
+
+for(var i = 0 ; i < repository.length ; i++ ){
+    if(repository[i].height > 2){
+        document.write('Pokemon: ' + repository[i].name + ', ' + 'Type: ' + repository[i].type + ', ' +'Height: ' + repository[i].height + 'Meters' + " Wow, that’s big!" + '<br>')
+
+        
+    } else {
+        document.write('Pokemon: ' + repository[i].name + ', ' + 'Type: ' + repository[i].type + ', ' +'Height: ' + repository[i].height + 'Meters' + '<br>')
+
+    }
+}
