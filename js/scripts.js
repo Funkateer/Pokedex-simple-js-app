@@ -28,10 +28,9 @@ var repository = [
 for(var i = 0 ; i < repository.length ; i++ ){
     if(repository[i].height > 2){
         document.write('Pokemon: ' + repository[i].name + ', ' + 'Type: ' + repository[i].type + ', ' +'Height: ' + repository[i].height + 'Meters' + " Wow, that’s big!" + '<br>')
-
-        
+    } else if (repository[i].type.length > 1) {
+        document.write('Pokemon: ' + repository[i].name + ', ' + 'Type: ' + repository[i].type[0] + ', ' + repository[i].type[1] + ', '+'Height: ' + repository[i].height + 'Meters' + '<br>')
     } else {
         document.write('Pokemon: ' + repository[i].name + ', ' + 'Type: ' + repository[i].type + ', ' +'Height: ' + repository[i].height + 'Meters' + '<br>')
-
     }
 }
