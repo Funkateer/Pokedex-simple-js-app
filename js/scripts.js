@@ -36,3 +36,15 @@ var pokemonRepository = (function(){
         add: add
     }
 }) ();
+
+pokemons = pokemonRepository.getAll();
+
+pokemons.forEach(function(pokemon){
+    if(pokemon.height > 2){
+        document.write('Pokemon: ' + pokemon.name + ', ' + 'Type: ' + pokemon.type + ', ' +'Height: ' + pokemon.height + 'Meters' + " Wow, that’s big!" + '<br>')
+    } else if (pokemon.type.length > 1) {
+        document.write('Pokemon: ' + pokemon.name + ', ' + 'Type: ' + pokemon.type[0] + ', ' + pokemon.type[1] + ', '+'Height: ' + pokemon.height + 'Meters' + '<br>')
+    } else {
+        document.write('Pokemon: ' + pokemon.name + ', ' + 'Type: ' + pokemon.type + ', ' +'Height: ' + pokemon.height + 'Meters' + '<br>')
+    }
+})
