@@ -25,26 +25,54 @@ var pokemonRepository = (function(){
         type: ['Normal']
         }
     ];
+
     function getAll(){
         return repository
     }
+
     function add(item){
         return repository.push(item);
     }
+
+    function addListItem(pokemon){
+        // var $pokemonsList = document.createElement('ul');
+        var $singlePokemon = document.createElement('li');
+        var $pokemonInfoButton = document.createElement('button');
+        var $body = document.querySelector('body');
+
+        //adding classes to elements
+        // $pokemonsList.classList.add('poke-list');
+        $singlePokemon.classList.add('poke-list__item');
+        $pokemonInfoButton.classList.add('poke-button');
+
+        //setting attribute to button and inner text = to pokemon name 
+        $pokemonInfoButton.setAttribute('type', 'button');
+        $pokemonInfoButton.innerText = pokemon.name;
+        
+        //appending element in DOM
+        $singlePokemon.appendChild($pokemonInfoButton );
+
+        // NOTE FOR SVENJA: I tried to create a ul to put all li inside but as you can guess ionce the forEach loop kicks in it wil generate a separate 
+        // ul with li inside of each pokemon do i need to use the ul (was just for semantics really) or leave it like this so at least will work?
+        
+        // $pokemonsList.appendChild($singlePokemon );
+        // $body.appendChild($pokemonsList);
+        $body.appendChild($singlePokemon);
+
+    }
+
     return {
         getAll: getAll,
-        add: add
+        add: add,
+        addListItem: addListItem
     }
+
+
+
 }) ();
 
 pokemons = pokemonRepository.getAll();
 
-// pokemons.forEach(function(pokemon){
-//     if(pokemon.height > 2){
-//         document.write('Pokemon: ' + pokemon.name + ', ' + 'Type: ' + pokemon.type + ', ' +'Height: ' + pokemon.height + 'Meters' + " Wow, that’s big!" + '<br>')
-//     } else if (pokemon.type.length > 1) {
-//         document.write('Pokemon: ' + pokemon.name + ', ' + 'Type: ' + pokemon.type[0] + ', ' + pokemon.type[1] + ', '+'Height: ' + pokemon.height + 'Meters' + '<br>')
-//     } else {
-//         document.write('Pokemon: ' + pokemon.name + ', ' + 'Type: ' + pokemon.type + ', ' +'Height: ' + pokemon.height + 'Meters' + '<br>')
-//     }
-// });
+pokemons.forEach(function(pokemon){
+    pokemonRepository.addListItem(pokemon);
+});
