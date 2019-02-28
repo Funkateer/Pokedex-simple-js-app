@@ -35,13 +35,11 @@ var pokemonRepository = (function(){
     }
 
     function addListItem(pokemon){
-        // var $pokemonsList = document.createElement('ul');
         var $singlePokemon = document.createElement('li');
         var $pokemonInfoButton = document.createElement('button');
         var $body = document.querySelector('body');
 
         //adding classes to elements
-        // $pokemonsList.classList.add('poke-list');
         $singlePokemon.classList.add('poke-list__item');
         $pokemonInfoButton.classList.add('poke-button');
 
@@ -51,14 +49,18 @@ var pokemonRepository = (function(){
         
         //appending element in DOM
         $singlePokemon.appendChild($pokemonInfoButton );
-
-        // NOTE FOR SVENJA: I tried to create a ul to put all li inside but as you can guess ionce the forEach loop kicks in it wil generate a separate 
-        // ul with li inside of each pokemon do i need to use the ul (was just for semantics really) or leave it like this so at least will work?
-        
-        // $pokemonsList.appendChild($singlePokemon );
-        // $body.appendChild($pokemonsList);
         $body.appendChild($singlePokemon);
 
+        //event listener on button that shows pokemon's detail in the console
+        $pokemonInfoButton.addEventListener('click', function(event)   
+        {
+         showDetails(pokemon);
+        });
+    }
+
+    function showDetails(pokemon)
+    {
+      console.log( pokemon.name ,  pokemon.height , pokemon.type );
     }
 
     return {
@@ -66,8 +68,6 @@ var pokemonRepository = (function(){
         add: add,
         addListItem: addListItem
     }
-
-
 
 }) ();
 
