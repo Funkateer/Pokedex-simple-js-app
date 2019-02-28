@@ -1,4 +1,4 @@
 # simple-js-app
-Simple Javascript app 
+Using Javascript to create a simple Pokédex app 
 
 https://funkateer.github.io/simple-js-app

@@ -43,7 +43,7 @@ var pokemonRepository = (function(){
         $singlePokemon.classList.add('poke-list__item');
         $pokemonInfoButton.classList.add('poke-button');
 
-        //setting attribute to button and inner text = to pokemon name 
+        //setting attribute to button and set its inner text to pokemon's name 
         $pokemonInfoButton.setAttribute('type', 'button');
         $pokemonInfoButton.innerText = pokemon.name;
         
