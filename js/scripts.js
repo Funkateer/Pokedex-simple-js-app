@@ -1,3 +1,4 @@
+// IIFE wrap
 var pokemonRepository = (function(){
     var repository = [];
     //Pokemon API
@@ -66,12 +67,21 @@ var pokemonRepository = (function(){
         });
     }
 
-    //show-details function:
-    function showDetails(pokemon)
-    {
-      console.log( pokemon.name ,  pokemon.height , pokemon.type );
+    //  showDetails(pokemon);
+    function showDetails(item) {
+        pokemonRepository.loadDetails(item).then(function () {
+            console.log(item);   
+        });
     }
-    
+
+    // //  showDetails(pokemon);
+    // function showDetails(item) {
+    //     pokemonRepository.loadDetails(item).then(function () {
+    //        console.log(item);   
+    //     });
+    // }
+
+
     // returning the al functions outputs to be used outside the IFEE 
     return {
         getAll: getAll,
@@ -81,10 +91,11 @@ var pokemonRepository = (function(){
         loadDetails: loadDetails
     }
 
-}) ();
+}) ();//IIFE wrap
 
-pokemons = pokemonRepository.getAll();
-
-pokemons.forEach(function(pokemon){
-    pokemonRepository.addListItem(pokemon);
+// iterate for each pokemon printing it in DOM
+pokemonRepository.loadList().then(function() {
+    pokemonRepository.getAll().forEach(function (pokemon) {
+        pokemonRepository.addListItem(pokemon);
+    });
 });
