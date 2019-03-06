@@ -1,11 +1,11 @@
 // IIFE wrap
 var pokemonRepository = (function(){
     var repository = [];
-    //Pokemon API
+    //variables holds the Pokemon API
     var apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
     function getAll(){
-        return repository
+        return repository;
     }
 
     function add(item){
@@ -53,10 +53,10 @@ var pokemonRepository = (function(){
         });
     }
 
-    // fetch pokemon detail from APIs
+    // fetch pokemon detail (img, height and type) using promises callback 
     function loadDetails(item) {
         var url = item.detailsUrl;
-        return fetch(apiUr).then(function (response) {
+        return fetch(url).then(function (response) {
             return response.json();
         }).then(function (details) {
             item.imageUrl = details.sprites.front_default;
@@ -73,14 +73,6 @@ var pokemonRepository = (function(){
             console.log(item);   
         });
     }
-
-    // //  showDetails(pokemon);
-    // function showDetails(item) {
-    //     pokemonRepository.loadDetails(item).then(function () {
-    //        console.log(item);   
-    //     });
-    // }
-
 
     // returning the al functions outputs to be used outside the IFEE 
     return {
