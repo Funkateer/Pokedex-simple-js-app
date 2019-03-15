@@ -1,17 +1,19 @@
 // IIFE wrap
 var pokemonRepository = (function(){
     var repository = [];
-    //variables holds the Pokemon API
     var apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
+    //returns an array of values being pushed by the 'add()' function
     function getAll(){
         return repository;
     }
 
+    // pushes any values from 'loadList' function to the 'repository' array
     function add(item){
         return repository.push(item);
     }
 
+    //builds list of pokemon and append it to DOM
     function addListItem(pokemon){
         var $singlePokemon = document.createElement('li');
         var $pokemonInfoButton = document.createElement('button');
@@ -36,7 +38,7 @@ var pokemonRepository = (function(){
         });
     }
 
-    //fetch pokemon list from its APIs
+    //fetch pokemon data from API and loop it in a json 'pokemon' object
     function loadList() {
         return fetch(apiUrl).then(function (response) {
             return response.json();
@@ -53,7 +55,7 @@ var pokemonRepository = (function(){
         });
     }
 
-    // fetch pokemon detail (img, height and type) using promises callback
+    // from 'pokemon' object fetches details: img, height and type
     function loadDetails(item) {
         var url = item.detailsUrl;
         return fetch(url).then(function (response) {
@@ -67,14 +69,14 @@ var pokemonRepository = (function(){
         });
     }
 
-    //  showDetails(pokemon);
+    //  response of '$pokemonInfoButton' event
     function showDetails(item) {
         pokemonRepository.loadDetails(item).then(function () {
             console.log(item);
         });
     }
 
-    // returning the al functions outputs to be used outside the IFEE
+    // returning all functions values occur inside the IFEE scope
     return {
         getAll: getAll,
         add: add,
