@@ -1,37 +1,43 @@
-* { 
+* {
     box-sizing: border-box;
 }
 
 body{
-    margin: 1%;
+    margin: 2% 3%;
     padding: 0;
     background-color: #c5b1ec;
     font-size: 13pt;
 }
 
+h1{
+    padding-left: 14%;
+}
+
+.main-content {
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+}
+
 ul{
     background-color: #b67cec;
     display: inline-block;
-    padding: 20px 60px;
+    width: 40%;
+    margin: 0 auto;
 }
 
-li{
+.poke-list__item{
     list-style: none;
     margin: 20px 0;
 }
 
-li img{
-    height: 100px;
-    padding: 0 5px 0 0;
-}
-
-button{
+.poke-list__button{
 
     border: 0;
-    padding: 5px;
-    width: 200px;
+    padding: 9px 6px;
+    width: 60%;
     background-color: #e4d8fc;
-    font-size: 13pt;
+    font-size: 15pt;
     font-weight: 400;
 }
 
@@ -44,32 +50,87 @@ button:hover{
     cursor: pointer;
 }
 
+
+#modal-container {
+    position: fixed;
+    padding: 20px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+
+    /* to show it above other content */
+    z-index: 999;
+
+    /* to allow scrolling if the screen is not high enough*/
+    overflow: auto;
+
+    /* this is used to center the modal */
+    display: none;
+    text-align: center;
+}
+
+#modal-container.is-visible {
+    display: block;
+}
+
+.modal {
+    margin: auto;
+    display: inline-block;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 15px;
+    width: 100%;
+    max-width: 700px;
+    text-align: left;
+}
+
+.modal-close {
+    float: right;
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+    color: #777;
+    text-decoration: underline;
+}
+
+.modal h1 {
+    margin-top: 0;
+}
+
+.modal p {
+    margin-bottom: 0;
+}
+
+.modal-img {
+    float: center;
+    text-align: center;
+    height: 200px
+}
+
 @media all and (max-width: 720px) {
     body{
         font-size: 12pt;
-        margin: 3%;
+        margin: 4px 0;
     }
 
     h1{
+        padding: 0;
         text-align: center;
     }
 
     ul{
         display: block;
         margin: 0 auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 98%;
     }
 
-    li{
-        margin: 25px 0;
-    }
-
-    li img{
-        padding: 0 5px 5px 0;
-        margin: 0 auto;
-    }
-
-    button{
+    .poke-list__button{
         display: block;
-        margin: auto 0;
+        width: 70%;
     }
 }
