@@ -32,7 +32,6 @@ ul{
 }
 
 .poke-list__button{
-
     border: 0;
     padding: 9px 6px;
     width: 60%;
@@ -80,11 +79,22 @@ button:hover{
     margin: auto;
     display: inline-block;
     box-sizing: border-box;
-    background: #fff;
-    padding: 15px;
+    background: #FBECFF;
+    padding: 20px;
     width: 100%;
-    max-width: 700px;
+    max-width: 500px;
     text-align: left;
+}
+
+img{
+    display: inline-block;
+    height: 230px;
+}
+
+p,
+h2{
+    text-align: center;
+    line-height: 25px
 }
 
 .modal-close {
@@ -94,6 +104,7 @@ button:hover{
     background: none;
     color: #777;
     text-decoration: underline;
+    font-size: 7pt;
 }
 
 .modal h1 {
@@ -107,7 +118,7 @@ button:hover{
 .modal-img {
     float: center;
     text-align: center;
-    height: 200px
+    height: 250px
 }
 
 @media all and (max-width: 720px) {

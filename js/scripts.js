@@ -1,7 +1,7 @@
 // IIFE wrap
 var pokemonRepository = (function(){
     var repository = [];
-    var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=14';
+    var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=42';
 
        // Runs the starting code
        main();
@@ -84,8 +84,14 @@ var pokemonRepository = (function(){
         var item = getAll()[details.id - 1];
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
-        item.types = Object.keys(details.types);
         item.weight = details.weight;
+        // array that holds pokemon type names, iterates if the's more than one type
+        item.type =[];
+        details.types.forEach(function(e){
+            item.type.push(" " + e.type.name);
+            return item.type;
+        });
+
         return item;
     }
 
@@ -99,7 +105,7 @@ var pokemonRepository = (function(){
     function createModalWithDetails(responseFromAPI) {
         var item = loadDetails(responseFromAPI);
 
-        showModal(item.name, `height: ${item.height}\n weight: ${item.weight}`);
+        showModal(item.name, `Height: ${item.height} Decimetres\n Weight: ${item.weight} Hectograms\n Type: ${item.type}`);
 
         var $modalContainer = document.querySelector('.modal');
 
@@ -126,7 +132,7 @@ var pokemonRepository = (function(){
         closeButtonElement.innerText = 'Close';
         closeButtonElement.addEventListener('click', hideModal);
 
-        var titleElement = document.createElement('h1');
+        var titleElement = document.createElement('h2');
         titleElement.innerText = title;
 
         var contentElement = document.createElement('p');
