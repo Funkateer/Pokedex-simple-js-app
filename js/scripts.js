@@ -85,7 +85,7 @@ var pokemonRepository = (function(){
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.weight = details.weight;
-        // array that holds pokemon type names, iterates if the's more than one type
+        // array that holds pokemon type names, iterates if there is more than one type
         item.type =[];
         details.types.forEach(function(e){
             item.type.push(" " + e.type.name);
