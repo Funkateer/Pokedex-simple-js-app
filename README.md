@@ -2,4 +2,4 @@
 Using Javascript to create a simple Pokédex app via API https://pokeapi.co/
 
 Have a look:
-https://funkateer.github.io/simple-js-app
+https://funkateer.github.io/Pokedex-simple-js-app
