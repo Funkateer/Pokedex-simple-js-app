@@ -3,8 +3,46 @@ var pokemonRepository = (function(){
     var repository = [];
     var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=42';
 
-       // Runs the starting code
-       main();
+
+    // starts with making an API request
+    makeRequest(apiUrl, loadList);
+
+    function makeRequest(url, callback) {
+        var request = new XMLHttpRequest();
+
+        request.addEventListener('load', resolve);
+        request.addEventListener('error', reject);
+
+        request.open('GET', url);
+        request.send();
+
+
+        function reject() {
+            console.log('The request failed (maybe you are offline?)');
+        }
+
+        function resolve(e) {
+            var xhr = e.target;
+            callback(xhr.responseText);
+        }
+    }
+
+    //fetch pokemon data from API and loop it in a json 'pokemon' object
+    function loadList(responseFromAPI) {
+        JSON.parse(responseFromAPI).results.forEach(function(item) {
+            var data = {
+                name: item.name,
+                detailsUrl: item.url
+            };
+            // Adds the retrieved data to the Repository
+            add(data);
+        });
+
+        // Populates the DOM with the loaded list
+        getAll().forEach(function(item, index) {
+            addListItem(item, index);
+        });
+    }
 
     //returns an array of values being pushed by the 'add()' function
     function getAll(){
@@ -34,47 +72,16 @@ var pokemonRepository = (function(){
         $appendNewButtonInsideListItem.appendChild($newButtonInsideListItem);
 
         // Adds event listener on button that shows pokemon's detail in the modal
-        $newButtonInsideListItem.addEventListener('click', element =>{
+        $newButtonInsideListItem.addEventListener('click', function(element){
             var $clickedButton = element.target;
             showDetails($clickedButton.id);
         });
     }
 
-    function makeRequest(url, callback) {
-        var request = new XMLHttpRequest();
-
-        request.addEventListener('load', resolve);
-        request.addEventListener('error', reject);
-
-        request.open('GET', url);
-        request.send();
-
-
-        function reject() {
-            console.log('The request failed (maybe you are offline?)');
-        }
-
-        function resolve(e) {
-            var xhr = e.target;
-            callback(xhr.responseText);
-        }
-    }
-
-    //fetch pokemon data from API and loop it in a json 'pokemon' object
-    function loadList(responseFromAPI) {
-        JSON.parse(responseFromAPI).results.forEach(item => {
-            var data = {
-                name: item.name,
-                detailsUrl: item.url
-            };
-            // Adds the retrieved data to the Repository
-            add(data);
-        });
-
-        // Populates the DOM with the loaded list
-        getAll().forEach((item, index) => {
-            addListItem(item, index);
-        });
+    //  response of '$pokemonInfoButton' event
+    function showDetails(item) {
+        var requestUrl = getAll()[item].detailsUrl;
+        makeRequest(requestUrl, createModalWithDetails);
     }
 
     // from 'pokemon' object fetches details: img, height and type
@@ -95,11 +102,6 @@ var pokemonRepository = (function(){
         return item;
     }
 
-    //  response of '$pokemonInfoButton' event
-    function showDetails(item) {
-        var requestUrl = getAll()[item].detailsUrl;
-        makeRequest(requestUrl, createModalWithDetails);
-    }
 
     // creates Modal
     function createModalWithDetails(responseFromAPI) {
@@ -119,6 +121,7 @@ var pokemonRepository = (function(){
         modalImg.appendChild(img);
         $modalContainer.appendChild(modalImg);
     }
+
     // fires event that show modal with information
     function showModal(title, text) {
         var $modalContainer = document.querySelector('#modal-container');
@@ -145,6 +148,22 @@ var pokemonRepository = (function(){
 
         $modalContainer.classList.add('is-visible');
 
+        // Code for closing modals with 'Esc' or clicking outside the modal
+        window.addEventListener('keydown', function(e) {
+            var $modalContainer = document.querySelector('#modal-container');
+            if (e.key === 'Escape' && $modalContainer.classList.contains('is-visible')) {
+                hideModal(true);
+            }
+        });
+
+        window.addEventListener('click', function(e) {
+            var target = e.target;
+            var $modalContainer = document.querySelector('#modal-container');
+            if (target === $modalContainer) {
+                hideModal(true);
+            }
+        });
+
     }
 
     function hideModal(resolveOrReject=null) {
@@ -157,50 +176,6 @@ var pokemonRepository = (function(){
         }
     }
 
-    function showDialog(title, text, resolve, reject) {
-        showModal(title, text);
-        var modal = document.querySelector('.modal');
-
-        var confirmButton = document.createElement('button');
-        confirmButton.classList.add('modal-confirm');
-        confirmButton.innerText = 'Confirm';
-        confirmButton.addEventListener('click', () => {
-            hideModal(resolve);
-        });
-
-        var cancelButton = document.createElement('button');
-        cancelButton.classList.add('modal-cancel');
-        cancelButton.innerText = 'Cancel';
-        cancelButton.addEventListener('click', () => {
-            hideModal(reject);
-        });
-
-        modal.appendChild(confirmButton);
-        modal.appendChild(cancelButton);
-
-        confirmButton.focus();
-    }
-
-    function main () {
-        // Populates the page with the items retrieved from API
-        makeRequest(apiUrl, loadList);
-
-        // Code for closing modals with 'Esc' or clicking outside the modal
-        window.addEventListener('keydown', e => {
-            var $modalContainer = document.querySelector('#modal-container');
-            if (e.key === 'Escape' && $modalContainer.classList.contains('is-visible')) {
-                hideModal(true);
-            }
-        });
-
-        window.addEventListener('click', e => {
-            var target = e.target;
-            var $modalContainer = document.querySelector('#modal-container');
-            if (target === $modalContainer) {
-                hideModal(true);
-            }
-        });
-    }
     // returning all functions values occur inside the IFEE scope
     return {
         getAll: getAll,
