@@ -1,8 +1,7 @@
 // IIFE wrap
-var pokemonRepository = (function(){
+(function(){
     var repository = [];
     var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=42';
-
 
     // starts with making an API request
     makeRequest(apiUrl, loadList);
@@ -95,7 +94,7 @@ var pokemonRepository = (function(){
         // array that holds pokemon type names, iterates if there is more than one type
         item.type =[];
         details.types.forEach(function(e){
-            item.type.push(" " + e.type.name);
+            item.type.push(' ' + e.type.name);
             return item.type;
         });
 
@@ -186,9 +185,7 @@ var pokemonRepository = (function(){
         showDetails: showDetails,
         makeRequest: makeRequest,
         showModal: showModal,
-        hideModal: hideModal,
-        showDialog: showDialog,
-        main: main
+        hideModal: hideModal
     };
 
 }) ();//IIFE wrap
