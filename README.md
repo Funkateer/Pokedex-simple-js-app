@@ -7,8 +7,8 @@ With the help of an APIs I used vanilla Javascript to fetch and display modal ca
 
 
 ## Features
-Search for Pokemons
-Display in modals info about Pokemons
+- Search for Pokemons
+- Display in modals info about Pokemons
 
 ## Live Demo
 To see the app in action, go to (https://funkateer.github.io/Pokedex-simple-js-app)
