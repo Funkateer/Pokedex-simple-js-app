@@ -10,14 +10,16 @@ With the help of an APIs I used vanilla Javascript to fetch and display modal ca
 - Search for Pokemons
 - Display in modals info about Pokemons
 
+
 ## Live Demo
 To see the app in action, go to (https://funkateer.github.io/Pokedex-simple-js-app)
 
 
 ## Tech/framework used
 ```
-Vanilla Javascript
+Javascript
 ```
+
 
 ## API Reference
 [API](https://pokeapi.co/)
@@ -42,7 +44,7 @@ Project Link: https://github.com/Funkateer/Pokedex-simple-js-app
 
 
 ## Contact
-Alaeddin Abugrara - [website](http://www.alabugrara.com) - [@twitter](https://twitter.com/twitter_handle) - [Github](https://github.com/Funkateer) - [Linked-in](https://www.linkedin.com/in/al%C3%A0-eddin-abugrara-214ba5115/)
+Alà Eddin Abugrara - [website](http://www.alabugrara.com) - [@twitter](https://twitter.com/twitter_handle) - [Github](https://github.com/Funkateer) - [Linked-in](https://www.linkedin.com/in/al%C3%A0-eddin-abugrara-214ba5115/)
 
 
 <!-- Markdown links & imgs  -->
