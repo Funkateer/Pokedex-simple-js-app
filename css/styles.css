@@ -39,17 +39,17 @@ nav{
 
 .nav-link{
   text-align: center;
-  margin: auto auto;
+  margin-top: -20px;
 }
 
 /* POKEMON LIST */
 .main-content {
-  width: 100%;
-  margin: 0 auto;
+  margin: 0 40px;
 }
 
 ul {
   margin: 0 1%;
+  padding-inline-start: 0;
 }
 
 img {
@@ -65,7 +65,7 @@ img {
 }
 
 .poke-list__button {
-  border: 0;
+  border: none;
   padding: 9px 6px;
   font-size: 15pt;
   font-weight: 400;
@@ -78,6 +78,7 @@ button:focus {
 button:hover {
   cursor: pointer;
 }
+
 /* MODAL */
 #modal-container {
   position: fixed;
@@ -161,25 +162,12 @@ footer {
     margin: 4px 0;
   }
 
-  h1 {
-    padding: 0;
+  .nav-link{
+    display: inline-block;
   }
 
-  ul {
-    display: block;
-    margin: 0 auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 98%;
-  }
-
-  .poke-list__button {
-    display: block;
-    width: 70%;
-  }
   .footer-title {
     font-size: 0.9rem;
-    margin-bottom: 5px;
   }
 
   .social-img {
