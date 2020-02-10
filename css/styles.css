@@ -20,6 +20,7 @@ nav{
   height: 86px;
   background-color: #E3F2FD;
   padding: 13px;
+  margin-bottom: 20px;
 }
 
 .nav-title{
@@ -31,27 +32,24 @@ nav{
 .nav-appVersion{
   color: grey;
   font-size: 1.2em;
-  margin: 10px 15px;
-  display: inline;
-  font-weight: 400;
+  margin: 6px 10px;
+  display: inline-block;
+  font-weight: 300;
 }
 
 .nav-link{
   text-align: center;
-  margin: 0 auto;
+  margin: auto auto;
 }
 
 /* POKEMON LIST */
 .main-content {
   width: 100%;
   margin: 0 auto;
-  text-align: left;
 }
 
 ul {
-  display: inline-block;
-  width: 70%;
-  margin: 0 auto;
+  margin: 0 1%;
 }
 
 img {
@@ -61,21 +59,20 @@ img {
 
 .poke-list__item {
   list-style: none;
-  /* margin: 10px 0; */
-  border: black solid 1px;
+  border: lightgrey solid 1px;
+  padding: 10px;
+  margin-bottom: -1px;
 }
 
 .poke-list__button {
   border: 0;
   padding: 9px 6px;
-  width: 80%;
   font-size: 15pt;
   font-weight: 400;
 }
 
 button:focus {
   outline: 0;
-  border: 1px solid blue;
 }
 
 button:hover {
@@ -166,7 +163,6 @@ footer {
 
   h1 {
     padding: 0;
-    text-align: center;
   }
 
   ul {
