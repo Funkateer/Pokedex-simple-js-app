@@ -3,7 +3,7 @@ With the help of an APIs I used vanilla Javascript to fetch and display modal ca
 
 
 ## Screenshots
-![screenshot](https://alabugrara.com/img/Pokedex-simple-js-app-poster.png)
+![screenshot](https://alabugrara.com/img/poster-Pokedex-js-app.png)
 
 
 ## Features
